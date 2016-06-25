@@ -1,3 +1,7 @@
 # Enter here password used for logging when YK is present. Optionally might be left empty.
 
-alamakota
+# A password in plaintext? WTF? Well the password is known to the USB VM anyway,
+# which is assumed to be untrusted, certainly must less than the Dom0 where
+# file is located.
+
+# changeme
