@@ -1,1 +1,3 @@
-# CHANGME: password used for logging with YK. Might be empty. No comments allowed.
+# Enter here password used for logging when YK is present. Optionally might be left empty.
+
+alamakota

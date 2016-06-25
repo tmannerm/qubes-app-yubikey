@@ -3,9 +3,9 @@
 set -x
 
 PREFIX="/usr/local"
-key=`cat $PREFIX/etc/qubes-yk-keys/yb-secret-key.hex | tr -d ' '`
-pass=`cat $PREFIX/etc/qubes-yk-keys/yb-login-pass.txt`
-ykvm=`cat $PREFIX/etc/qubes-yk-keys/yk-vm`
+key=`cat $PREFIX/etc/qubes-yk-keys/yb-secret-key.hex | sed -e 's/^#.*$//' | tr -d '\n' | tr -d ' '`
+pass=`cat $PREFIX/etc/qubes-yk-keys/yb-login-pass.txt | sed -e 's/^#.*$//' | tr -d '\n'`
+ykvm=`cat $PREFIX/etc/qubes-yk-keys/yk-vm | sed -e 's/^#.*$//' | tr -d '\n'`
 
 # if password was given, verify it
 if [ -n "$pass" ]; then
