@@ -5,12 +5,23 @@ set -x
 PREFIX="/usr/local"
 CONFIG_DIR="$PREFIX/etc/qubes-yk-keys"
 key=`cat $CONFIG_DIR/yk-secret-key.hex | grep -v '^#' | tr -d ' \n'`
-pass=`cat $CONFIG_DIR/yk-login-pass.txt | grep -v '^#' | tr -d '\n'`
+if [ -r "$CONFIG_DIR/yk-login-pass-hashed.hex" ]; then
+    pass_hash=`cat $CONFIG_DIR/yk-login-pass-hashed.hex | grep -v '^#' | tr -d '\n'`
+fi
+if [ -z "$pass_hash" -a -r "$CONFIG_DIR/yk-login-pass" ]; then
+    # do it in one line (without any intermediate variable, to not leak
+    # password to logs, even with set -x
+    pass_hash_clear=`cat $CONFIG_DIR/yk-login-pass | grep -v '^#' | tr -d '\n' |
+        openssl dgst -sha1 -r | cut -f1 -d ' '`
+    # check if not hash of empty string
+    if [ "$pass_hash_clear" != "da39a3ee5e6b4b0d3255bfef95601890afd80709" ]; then
+        pass_hash="$pass_hash_clear"
+    fi
+fi
 ykvm=`cat $CONFIG_DIR/yk-vm | grep -v '^#' | tr -d '\n'`
 
 # if password was given, verify it
-if [ -n "$pass" ]; then
-    pass_hash=`echo -n $pass | openssl dgst -sha1 -r | cut -f1 -d ' '`
+if [ -n "$pass_hash" ]; then
     # PAM appends \0 at the end
     hash=`head -c -1 | openssl dgst -sha1 -r | cut -f1 -d ' '`
     if [ "x$pass_hash" != "x$hash" ]; then
