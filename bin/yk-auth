@@ -3,9 +3,10 @@
 set -x
 
 PREFIX="/usr/local"
-key=`cat $PREFIX/etc/qubes-yk-keys/yk-secret-key.hex | sed -e 's/^#.*$//' | tr -d '\n' | tr -d ' '`
-pass=`cat $PREFIX/etc/qubes-yk-keys/yk-login-pass.txt | sed -e 's/^#.*$//' | tr -d '\n'`
-ykvm=`cat $PREFIX/etc/qubes-yk-keys/yk-vm | sed -e 's/^#.*$//' | tr -d '\n'`
+CONFIG_DIR="$PREFIX/etc/qubes-yk-keys"
+key=`cat $CONFIG_DIR/yk-secret-key.hex | grep -v '^#' | tr -d ' \n'`
+pass=`cat $CONFIG_DIR/yk-login-pass.txt | grep -v '^#' | tr -d '\n'`
+ykvm=`cat $CONFIG_DIR/yk-vm | grep -v '^#' | tr -d '\n'`
 
 # if password was given, verify it
 if [ -n "$pass" ]; then
