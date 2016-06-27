@@ -1,7 +1,11 @@
 # Enter here password used for logging when YK is present. Optionally might be left empty.
 
-# A password in plaintext? WTF? Well the password is known to the USB VM anyway,
-# which is assumed to be untrusted, certainly must less than the Dom0 where
-# file is located.
+# A password in plaintext? WTF? Well the password is known to the USB VM anyway
+# (in case of USB keyboard), which is assumed to be untrusted, certainly must
+# less than the Dom0 where file is located.
+#
+# But if you prefer to keep only a hash of the password, this is also
+# supported. Use `yk-login-pass-hashed.hex` file. If you fill it, plaintext
+# version (below) will be ignored.
 
 # changeme
