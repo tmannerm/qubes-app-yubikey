@@ -2,8 +2,8 @@
 
 set -x
 
-PREFIX="/usr/local"
-CONFIG_DIR="$PREFIX/etc/qubes-yk-keys"
+PREFIX=""
+CONFIG_DIR="$PREFIX/etc/qubes/yk-keys"
 key=`cat $CONFIG_DIR/yk-secret-key.hex | grep -v '^#' | tr -d ' \n'`
 if [ -r "$CONFIG_DIR/yk-login-pass-hashed.hex" ]; then
     pass_hash=`cat $CONFIG_DIR/yk-login-pass-hashed.hex | grep -v '^#' | tr -d '\n'`
