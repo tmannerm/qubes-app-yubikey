@@ -32,7 +32,7 @@ cp -a bin $RPM_BUILD_ROOT/usr/
 
 %files
 %doc README.md
-%config(noreplace) /etc/qubes/yk-keys/ykvm
+%config(noreplace) /etc/qubes/yk-keys/yk-vm
 %config(noreplace) /etc/qubes/yk-keys/yk-login-pass
 %config(noreplace) /etc/qubes/yk-keys/yk-login-pass-hashed.hex
 %config(noreplace) /etc/qubes/yk-keys/yk-secret-key.hex
