@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 PREFIX=""
 CONFIG_DIR="$PREFIX/etc/qubes/yk-keys"
 key=`cat $CONFIG_DIR/yk-secret-key.hex | grep -v '^#' | tr -d ' \n'`
