@@ -32,6 +32,7 @@ cp -a bin $RPM_BUILD_ROOT/usr/
 
 %files
 %doc README.md
+%config(noreplace) /etc/pam.d/yubico
 %config(noreplace) /etc/qubes/yk-keys/yk-vm
 %config(noreplace) /etc/qubes/yk-keys/yk-login-pass
 %config(noreplace) /etc/qubes/yk-keys/yk-login-pass-hashed.hex
