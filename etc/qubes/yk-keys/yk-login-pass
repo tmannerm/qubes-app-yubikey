@@ -1,4 +1,5 @@
-# Enter here password used for logging when YK is present. Optionally might be left empty.
+# Enter here password used for login when YK is present.
+# Optionally might be left empty.
 
 # A password in plaintext? WTF? Well the password is known to the USB VM anyway
 # (in case of USB keyboard), which is assumed to be untrusted, certainly must
