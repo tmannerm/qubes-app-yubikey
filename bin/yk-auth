@@ -28,7 +28,7 @@ if [ -n "$pass_hash" ]; then
 fi
 
 challenge=`head -c64 /dev/urandom | xxd -c 64 -ps`
-# You may need to adjust slot number and USB VM name here
+# You may need to adjust slot number here
 response=`qvm-run -a -u root --nogui -p $ykvm "ykchalresp -2 -x $challenge"`
 
 correct_response=`echo $challenge | xxd -r -ps | openssl dgst -sha1 -macopt hexkey:$key -mac HMAC -r | cut -f1 -d ' '`
