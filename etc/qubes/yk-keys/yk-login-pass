@@ -1,4 +1,4 @@
-# Enter here password used for login when yubikey is present.
+# Enter here password used for login when YubiKey is present.
 # Optionally might be left empty.
 
 # A password in plaintext? WTF? Well the password is known to the USB VM anyway
