@@ -1,4 +1,4 @@
-# The name of the Qubes VM where the YK is inserted.
+# The name of the Qubes VM where the YubiKey is inserted.
 # Must have USB controller assigned, or USB passed.
 # Note: this VM is *not* considered trusted.
 
