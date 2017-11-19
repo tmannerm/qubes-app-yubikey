@@ -1,4 +1,4 @@
-# Enter here SHA1 hash of the password used for logging when YK is present.
+# Enter here SHA1 hash of the password used for login when YubiKey is present.
 # Optionally might be left empty.
 
 # To generate SHA1 hash, you can use this command (replace "PASSWORD" with
