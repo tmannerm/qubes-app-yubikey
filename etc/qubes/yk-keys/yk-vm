@@ -1,5 +1,5 @@
 # The name of the Qubes VM where the YubiKey is inserted.
-# Must have USB controller assigned, or USB passed.
+# Must have USB controller assigned, or YubiKey assigned.
 # Note: this VM is *not* considered trusted.
 
 sys-usb
