@@ -1,7 +1,5 @@
-%{!?version: %define version %(cat version)}
-
 Name:		qubes-yubikey-dom0
-Version:    %{version}
+Version:    @VERSION@
 Release:	1%{?dist}
 Summary:	Yubikey support scripts for Qubes OS
 
@@ -11,19 +9,14 @@ URL:		https://www.qubes-os.org/doc/yubi-key/
 
 Requires:	openssl
 
-%if 0%{?qubes_builder}
-%define _builddir %(pwd)
-%endif
+
+Source0: %{name}-%{version}.tar.gz
 
 %description
 Scripts for easier integration of YubiKey into Qubes OS login.
 
 %prep
-%if ! 0%{?qubes_builder}
 %setup -q
-%endif
-
-%build
 
 %install
 cp -a etc $RPM_BUILD_ROOT/
