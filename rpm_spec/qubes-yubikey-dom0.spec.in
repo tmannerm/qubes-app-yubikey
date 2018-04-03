@@ -33,4 +33,4 @@ cp -a bin $RPM_BUILD_ROOT/usr/
 /usr/bin/yk-auth
 
 %changelog
-
+@CHANGELOG@
