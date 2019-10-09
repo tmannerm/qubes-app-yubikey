@@ -27,7 +27,7 @@ if [ -n "$pass_hash" ]; then
     fi
 fi
 
-challenge=$(head -c64 /dev/urandom | xxd -c 64 -ps)
+challenge=$(head -c63 /dev/urandom | xxd -c 63 -ps)
 # You may need to adjust slot number here
 response=$(qvm-run -a -u root --nogui -p $ykvm "ykchalresp -2 -x '$challenge'")
 
