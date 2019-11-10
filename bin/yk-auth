@@ -17,6 +17,7 @@ if [ -z "$pass_hash" -a -r "$CONFIG_DIR/yk-login-pass" ]; then
     fi
 fi
 ykvm=$(cat $CONFIG_DIR/yk-vm | grep -v '^#' | tr -d '\n')
+ykslot=$(cat $CONFIG_DIR/yk-slot | grep -v '^#' | tr -d '\n')
 
 # if password was given, verify it
 if [ -n "$pass_hash" ]; then
@@ -28,8 +29,7 @@ if [ -n "$pass_hash" ]; then
 fi
 
 challenge=$(head -c64 /dev/urandom | xxd -c 64 -ps)
-# You may need to adjust slot number here
-response=$(qvm-run -a -u root --nogui -p $ykvm "ykchalresp -2 -x '$challenge'")
+response=$(qvm-run -a -u root --nogui -p $ykvm "ykchalresp -'$ykslot' -x '$challenge'")
 
 correct_response=$(echo $challenge | xxd -r -ps | openssl dgst -sha1 -macopt hexkey:$key -mac HMAC -r | cut -f1 -d ' ')
 # A yubikey configured for a variable length challenge will truncate the last byte when given a 64 byte challenge
